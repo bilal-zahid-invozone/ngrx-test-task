@@ -1,0 +1,85 @@
+<button class="add-btn" mat-button color="primary" (click)="openDialog()">Add User</button>
+
+<input
+        matInput
+        #filterInputRef
+        placeholder="Type email"
+/>
+
+
+<mat-tab-group>
+    <mat-tab label="User Info">
+        <div class="vertical-tabs">
+            <mat-tab-group color="default">
+                <mat-tab  *ngFor="let course of courseItems$ | async" label="{{ course.name }}">
+                    <user-profile>
+                        <div class="card-wrapper">
+                            <mat-card class="example-card">
+                                <mat-card-header>
+                                    <mat-card-title>{{ course.name }}</mat-card-title>
+                                    <mat-card-subtitle>
+                                        {{ course.email }}
+                                    </mat-card-subtitle>
+                                </mat-card-header>
+                                <mat-card-content>
+                                    <p>
+                                        {{ course.about }}
+                                    </p>
+                                </mat-card-content>
+                            </mat-card>
+                        </div>
+                    </user-profile>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+
+    </mat-tab>
+    <mat-tab label="History">
+        History
+    </mat-tab>
+</mat-tab-group>
+
+
+<!--<div class="container" fxLayout="row" fxLayoutAlign="center none">-->
+<!--  <div fxFlex="95%">-->
+<!--    <button class="add-btn" mat-button color="primary" (click)="openDialog()">Add User</button>-->
+
+<!--    <mat-card>-->
+<!--      <mat-card-content>-->
+<!--        <h2>Users</h2>-->
+
+
+<!--        <div class="container">-->
+<!--          <div class="no-records animate">-->
+<!--            <table fxFill mat-table [dataSource]="dataSource">-->
+
+<!--              &lt;!&ndash; Name Column &ndash;&gt;-->
+<!--              <ng-container matColumnDef="name">-->
+<!--                <th mat-header-cell *matHeaderCellDef> Name </th>-->
+<!--                <td mat-cell *matCellDef="let element"> {{element.name}} </td>-->
+<!--              </ng-container>-->
+
+<!--              &lt;!&ndash; Weight Column &ndash;&gt;-->
+<!--              <ng-container matColumnDef="email">-->
+<!--                <th mat-header-cell *matHeaderCellDef> Email </th>-->
+<!--                <td mat-cell *matCellDef="let element"> {{element.email}} </td>-->
+<!--              </ng-container>-->
+
+<!--              &lt;!&ndash; Symbol Column &ndash;&gt;-->
+<!--              <ng-container matColumnDef="about">-->
+<!--                <th mat-header-cell *matHeaderCellDef> About </th>-->
+<!--                <td mat-cell *matCellDef="let element"> {{element.about}} </td>-->
+<!--              </ng-container>-->
+
+<!--              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>-->
+<!--              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>-->
+<!--            </table>-->
+<!--          </div>-->
+<!--          <mat-icon> </mat-icon>-->
+<!--        </div>-->
+
+<!--      </mat-card-content>-->
+<!--    </mat-card>-->
+
+<!--  </div>-->
+<!--</div>-->

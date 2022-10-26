@@ -1,0 +1,20 @@
+<h1>asdas</h1>
+<mat-tab  *ngFor="let course of data" label="{{ course.name }}">
+    <user-profile>
+        <div class="card-wrapper">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title>{{ course.name }}</mat-card-title>
+                    <mat-card-subtitle>
+                        {{ course.email }}
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>
+                        {{ course.about }}
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </user-profile>
+</mat-tab>
