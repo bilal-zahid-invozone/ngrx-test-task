@@ -4,14 +4,7 @@ import {AddItemAction} from '../actions/course.action';
 import {Action, createReducer, on} from "@ngrx/store";
 // //create a dummy initial state
 
-const initialState: Array<CourseItem> = [
-    {
-        id: '1',
-        name: 'C++ Programming',
-        email: 'Computer Engineering',
-        about: 'Computer Engineering',
-    },
-];
+const initialState: Array<CourseItem> = [];
 
 const reducer = createReducer(
     initialState,

@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import {Store} from '@ngrx/store';
-import {debounceTime, distinctUntilChanged, fromEvent, map, Observable, startWith} from 'rxjs';
+import {debounceTime, distinctUntilChanged, fromEvent, map, Observable, of, startWith} from 'rxjs';
 import { MatDialog } from "@angular/material/dialog";
 
 import {AddUserComponent} from "../add-user/add-user.component";
@@ -18,6 +18,7 @@ export class UserListComponent implements OnInit, AfterViewInit {
   @ViewChild('filterInputRef') private readonly filterInput: ElementRef;
 
   courseItems$: Observable<Array<CourseItem>>;
+  masterCourseItems$: Observable<Array<CourseItem>>;
 
   constructor(
     private titleService: Title,
@@ -27,6 +28,7 @@ export class UserListComponent implements OnInit, AfterViewInit {
 
   openDialog() {
     this.courseItems$ = this.store.select((store) => store.course);
+    this.masterCourseItems$ = this.courseItems$;
     this.dialog.open(AddUserComponent);
   }
 
@@ -41,7 +43,15 @@ export class UserListComponent implements OnInit, AfterViewInit {
         debounceTime(30),
         distinctUntilChanged(),
     ).subscribe((value: string) => {
-      console.log(value)
+      if (value.length === 0) {
+        this.courseItems$ = this.masterCourseItems$;
+      } else {
+        this.courseItems$.subscribe((data) => {
+          const newData = data.filter((x) => x.email?.toLowerCase().indexOf(this.filterInput.nativeElement.value.toLowerCase()) !== -1,
+          );
+          this.courseItems$ = of(newData)
+        });
+      }
     });
   }
 }
