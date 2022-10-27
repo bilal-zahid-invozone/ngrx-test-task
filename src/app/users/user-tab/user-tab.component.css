@@ -17,3 +17,13 @@
 :host /deep/ .vertical-tabs .mat-tab-body-wrapper {
     flex: 1 1 auto;
 }
+.filter {
+    display: block;
+    padding: 20px;
+    width: 20%;
+}
+
+.card-wrapper {
+    width: 20%;
+    margin: 10px;
+}

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import {AddItemAction} from "../../../store/actions/course.action";
 import {Store} from "@ngrx/store";
 import {AppState} from "../../../store/models/app-state.model";
+import {MatDialogRef} from "@angular/material/dialog";
 
 
 @Component({
@@ -17,7 +18,8 @@ export class AddUserComponent {
 
     constructor(
         private formBuilder: FormBuilder,
-        private store: Store<AppState>
+        private store: Store<AppState>,
+        private dialogRef: MatDialogRef<AddUserComponent>
                 ) {}
 
     ngOnInit() {
@@ -34,6 +36,8 @@ export class AddUserComponent {
 
     onSubmit(form: any) {
         this.store.dispatch(AddItemAction(form));
+        this.formGroup.reset();
+        this.dialogRef.close(AddUserComponent);
     }
 
 }

@@ -1,6 +1,5 @@
 :host /deep/ .vertical-tabs .mat-tab-group {
     flex-direction: row;
-    margin-top: 50px;
 }
 :host /deep/ .vertical-tabs .mat-tab-header {
     border-bottom: none;
@@ -17,10 +16,4 @@
 }
 :host /deep/ .vertical-tabs .mat-tab-body-wrapper {
     flex: 1 1 auto;
-}
-
-.filter {
-    display: block;
-    padding: 20px;
-    width: 20%;
 }
