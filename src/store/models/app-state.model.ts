@@ -1,5 +1,6 @@
 import { CourseItem } from './courseItem.model';
 
 export interface AppState {
-  readonly course: Array<CourseItem>;
+  users: any;
+  course: Array<CourseItem>;
 }

@@ -6,7 +6,9 @@ import { MatDialog } from "@angular/material/dialog";
 
 import {AddUserComponent} from "../add-user/add-user.component";
 import {CourseItem} from "../../../store/models/courseItem.model";
-import {AppState} from "../../../store/models/app-state.model";
+import { AppState } from 'src/store/reducers';
+import { StorageMap } from '@ngx-pwa/local-storage';
+
 
 @Component({
   selector: 'app-user-list',
@@ -18,15 +20,24 @@ export class UserListComponent implements OnInit, AfterViewInit {
   @ViewChild('filterInputRef') private readonly filterInput: ElementRef;
 
   courseItems$: Observable<Array<CourseItem>>;
+  storage$: Observable<any>;
+
 
   constructor(
     private titleService: Title,
     public dialog: MatDialog,
-    private store: Store<AppState>
-  ) {}
+    private store: Store<AppState>,
+    private storage: StorageMap
+
+  ) {
+    this.storage$ = this.storage.get('users');
+    console.log(this.storage$);
+
+  }
 
   openDialog() {
-    this.courseItems$ = this.store.select((store) => store.course);
+    console.log( this.store.select((store) => store.users));
+
     this.dialog.open(AddUserComponent);
   }
 

@@ -16,8 +16,9 @@ const initialState: Array<CourseItem> = [
 const reducer = createReducer(
     initialState,
     on(AddItemAction, (state, action) => {
-        console.log(action)
-      return [...state, action]
+      const {type, ...stateValue} = action;
+      initialState.push(stateValue as CourseItem);
+      return initialState;
     })
 );
 

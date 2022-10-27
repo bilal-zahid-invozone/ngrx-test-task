@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import {AddItemAction} from "../../../store/actions/course.action";
+// import {AddItemAction} from "../../../store/actions/course.action";
 import {Store} from "@ngrx/store";
 import {AppState} from "../../../store/models/app-state.model";
+import { add } from 'src/store/actions/user.actions';
 
 
 @Component({
@@ -33,7 +34,7 @@ export class AddUserComponent {
     }
 
     onSubmit(form: any) {
-        this.store.dispatch(AddItemAction(form));
+        this.store.dispatch(add(form));
     }
 
 }
